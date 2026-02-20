@@ -1,0 +1,99 @@
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowDown, ChevronDown } from "lucide-react";
+
+const banners = [
+  "/images/banner5.jpg",
+  "/images/banner4.jpg",
+  "/images/banner3.jpg",
+  "/images/banner2.jpg",
+];
+
+function Hero() {
+  const [current, setCurrent] = useState(0);
+
+  // Auto Slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % banners.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const goto = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Background Slider */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${banners[current]})` }}
+        />
+      </AnimatePresence>
+
+      {/* Dark Navy Overlay */}
+      <div className="absolute opacity-40 inset-0 bg-gradient-to-br from-black/95 via-black/90 to-black/95" />
+
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="relative z-10 text-center px-6 max-w-4xl"
+      >
+        {/* Established Line */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="text-white tracking-[4px] uppercase text-[11px] sm:text-xs mb-4"
+        >
+          Est. 1999 · Indore, Madhya Pradesh
+        </motion.p>
+
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="font-alpino font-bold text-white md:leading-[4.5rem] mb-6 text-5xl md:text-6xl lg:text-8xl"
+        >
+          Pakiza Public <br />
+          <span className=" text-[#f7ce83]">School</span>
+        </motion.h1>
+
+        {/* Tagline */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
+          className="text-white/90 italic text-base md:text-lg mb-10  "
+        >
+          Nurturing Minds · Shaping Futures · Building Character
+        </motion.p>
+      </motion.div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white flex flex-col items-center gap-2"
+      >
+        <span className="text-xs tracking-widest uppercase  ">Scroll</span>
+        <ChevronDown />
+      </motion.div>
+    </section>
+  );
+}
+
+export default Hero;
