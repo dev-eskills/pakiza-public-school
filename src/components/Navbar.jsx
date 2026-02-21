@@ -40,7 +40,7 @@ const Navbar = () => {
     <motion.div
       initial={{ y: -60 }}
       animate={{ y: 0 }}
-      className="w-full bg-[#0B1F4B] sticky top-0 z-50 shadow-md transition-all duration-500"
+      className="w-full bg-[#000e51] sticky top-0 z-50 shadow-md transition-all duration-500"
     >
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo appears only after scroll */}
