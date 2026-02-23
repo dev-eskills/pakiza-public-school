@@ -95,7 +95,7 @@ drop-shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
         </h1>
 
         {/* Sub Heading */}
-        <p className="drop-shadow-[0_4px_15px_rgba(0,0,0,0.4)] text-white/90 text-sm md:text-lg sm:max-w-3xl mx-auto mb-3 sm:mb-6">
+        <p className="drop-shadow-[0_4px_15px_rgba(0,0,0,0.4)] text-white/90 text-sm md:text-lg sm:max-w-3xl mx-auto mb-3 sm:mb-3">
           A trusted institution committed to
           <span className="text-[#f7ce83] font-semibold">
             {" "}
@@ -111,7 +111,7 @@ drop-shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
         </p>
 
         {/* Parent Focused Line */}
-        {/* <p className=" drop-shadow-[0_4px_15px_rgba(0,0,0,0.5)] text-white/80 text-sm md:text-lg max-w-5xl mx-auto mb-10">
+        <p className=" drop-shadow-[0_4px_15px_rgba(0,0,0,0.5)] text-white/80 text-sm md:text-lg max-w-5xl mx-auto mb-6">
           At Pakiza Public School, we partner with parents to nurture
           <span className="font-semibold text-white"> confident learners</span>,
           <span className="font-semibold text-white">
@@ -120,7 +120,7 @@ drop-shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
           </span>
           , and
           <span className="font-semibold text-white"> future leaders</span>.
-        </p> */}
+        </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-6">
