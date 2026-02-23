@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowDown, ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const banners = [
-  "/images/banner5.jpg",
-  "/images/banner4.jpg",
-  "/images/banner3.jpg",
-  "/images/banner2.jpg",
+  "/images/library.JPG",
+  "/images/banner6.jpg",
+  "/images/banner10.jpg",
+  "/images/banner9.JPG",
 ];
 
 function Hero() {
@@ -20,17 +21,13 @@ function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  const goto = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Slider */}
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
         <motion.div
           key={current}
           initial={{ opacity: 0, scale: 1.1 }}
@@ -39,176 +36,167 @@ function Hero() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${banners[current]})` }}
         />
+      </AnimatePresence> */}
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="video-bg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2 }}
+          className="absolute inset-0 overflow-hidden"
+        >
+          <video
+            autoPlay
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/videos/school-hero3.mp4" type="video/mp4" />
+          </video>
+
+          <div className="absolute inset-0 bg-black/20"></div>
+        </motion.div>
       </AnimatePresence>
 
-      {/* Dark Navy Overlay */}
-      <div className="absolute opacity-40 inset-0 bg-gradient-to-br from-black/95 via-black/90 to-black/95" />
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/25" />
 
       {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 text-center px-6 max-w-4xl"
-      >
-        {/* Established Line */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="text-white tracking-[4px] uppercase text-[11px] sm:text-xs mb-4"
-        >
+      <div className="relative py-10 sm:py-0 z-10 text-center px-6 max-w-6xl">
+        {/* Top Line */}
+        <p className="text-white tracking-[2px] uppercase text-xs mb-2 sm:mb-4">
           Est. 1999 · Indore, Madhya Pradesh
-        </motion.p>
+        </p>
 
-        {/* Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="font-alpino font-bold text-white md:leading-[4.5rem] mb-6 text-5xl md:text-6xl lg:text-8xl"
+        {/* Main Heading */}
+        <h1
+          className="font-bold text-white leading-11 sm:leading-18 mb-3 sm:mb-6 
+text-4xl sm:text-5xl md:text-6xl lg:text-7xl 
+drop-shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
         >
-          Pakiza Public <br />
-          <span className=" text-[#f7ce83]">School</span>
-        </motion.h1>
+          Empowering Young Minds at <br />
+          <span className="text-[#f7ce83] drop-shadow-[0_4px_15px_rgba(0,0,0,0.4)]">
+            Pakiza Public School
+          </span>
+          <motion.span
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{
+              duration: 1,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="text-[#f7ce83]"
+          >
+            {" "}
+            .
+          </motion.span>
+        </h1>
 
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-          className="text-white/90 italic text-base md:text-lg mb-10  "
-        >
-          Nurturing Minds · Shaping Futures · Building Character
-        </motion.p>
-      </motion.div>
+        {/* Sub Heading */}
+        <p className="drop-shadow-[0_4px_15px_rgba(0,0,0,0.4)] text-white/90 text-sm md:text-lg sm:max-w-3xl mx-auto mb-3 sm:mb-6">
+          A trusted institution committed to
+          <span className="text-[#f7ce83] font-semibold">
+            {" "}
+            Academic Excellence
+          </span>
+          ,<span className="text-[#f7ce83] font-semibold"> Moral Values</span>,
+          and
+          <span className="text-[#f7ce83] font-semibold">
+            {" "}
+            Holistic Development
+          </span>
+          — preparing students to thrive in a rapidly evolving world.
+        </p>
+
+        {/* Parent Focused Line */}
+        {/* <p className=" drop-shadow-[0_4px_15px_rgba(0,0,0,0.5)] text-white/80 text-sm md:text-lg max-w-5xl mx-auto mb-10">
+          At Pakiza Public School, we partner with parents to nurture
+          <span className="font-semibold text-white"> confident learners</span>,
+          <span className="font-semibold text-white">
+            {" "}
+            responsible citizens
+          </span>
+          , and
+          <span className="font-semibold text-white"> future leaders</span>.
+        </p> */}
+
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap justify-center gap-4 mb-6">
+          <motion.div
+            className="relative inline-block rounded-lg overflow-hidden group"
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+          >
+            <Link
+              to="/admissions"
+              className="relative flex items-center justify-center
+               px-10 py-3 
+               bg-white 
+               text-[#000e51] 
+               font-semibold 
+               shadow-[0_8px_25px_rgba(0,0,0,0.25)]"
+            >
+              {/* Text */}
+              <motion.span
+                variants={{
+                  rest: { x: 0 },
+                  hover: { x: -8 },
+                }}
+                transition={{ duration: 0.3 }}
+                className="relative z-10"
+              >
+                Apply for Admission
+              </motion.span>
+
+              {/* Chevron */}
+              <motion.span
+                variants={{
+                  rest: { opacity: 0, x: 10 },
+                  hover: { opacity: 1, x: 0 },
+                }}
+                transition={{ duration: 0.3 }}
+                className="absolute right-6 z-10 text-black"
+              >
+                <ChevronRight size={18} />
+              </motion.span>
+            </Link>
+
+            {/* Infinite Shine Layer */}
+            <motion.div
+              className="absolute top-0 left-0 w-1/3 h-full 
+               bg-linear-to-r 
+               from-transparent 
+               via-gray-300/70 
+               to-transparent 
+               skew-x-[-25deg]"
+              animate={{ x: ["-150%", "400%"] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "linear",
+                repeatDelay: 1,
+              }}
+            />
+          </motion.div>
+          {/* <Link
+            to="/contact"
+            className="border border-white font-semibold text-white px-8 py-3 rounded-md hover:bg-white hover:text-black transition duration-300"
+          >
+            Book a Campus Visit
+          </Link> */}
+        </div>
+      </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white flex flex-col items-center gap-2"
-      >
-        <span className="text-xs tracking-widest uppercase  ">Scroll</span>
+      <div className=" hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 text-white flex-col items-center gap-2">
+        <span className="text-xs tracking-widest uppercase">Scroll</span>
         <ChevronDown />
-      </motion.div>
+      </div>
     </section>
   );
 }
 
 export default Hero;
-
-// import { useEffect, useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { ChevronDown } from "lucide-react";
-
-// const banners = [
-//   "/images/banner5.jpg",
-//   "/images/banner4.jpg",
-//   "/images/banner3.jpg",
-//   "/images/banner2.jpg",
-// ];
-
-// function Hero() {
-//   const [current, setCurrent] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrent((prev) => (prev + 1) % banners.length);
-//     }, 6000);
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-//       {/* Background Slider */}
-//       <AnimatePresence mode="wait">
-//         <motion.div
-//           key={current}
-//           initial={{ opacity: 0, scale: 1.05 }}
-//           animate={{ opacity: 1, scale: 1 }}
-//           transition={{ duration: 1.8 }}
-//           className="absolute inset-0 bg-cover bg-center"
-//           style={{ backgroundImage: `url(${banners[current]})` }}
-//         />
-//       </AnimatePresence>
-
-//       {/* Warm Architectural Overlay */}
-//       <div className="absolute inset-0 bg-gradient-to-br from-[#1F1F1F]/80 via-[#1F1F1F]/70 to-[#1F1F1F]/85" />
-
-//       {/* Content */}
-//       <div className="relative z-10 text-center px-6 max-w-5xl">
-//         <p className="text-[#C6A75E] tracking-[4px] uppercase text-xs mb-6">
-//           Est. 1999 · Indore, Madhya Pradesh
-//         </p>
-
-//         <h1 className="font-bold text-white leading-tight mb-6 text-5xl md:text-6xl lg:text-7xl">
-//           Pakiza Public <br />
-//           <span className="text-[#C6A75E]">School</span>
-//         </h1>
-
-//         <p className="text-white/80 text-base md:text-lg mb-10">
-//           Nurturing Minds · Shaping Futures · Building Character
-//         </p>
-
-//         {/* CTA Buttons */}
-//         <div className="flex justify-center gap-6 flex-wrap">
-//           <a
-//             href="#admissions"
-//             className="px-8 py-3 bg-[#C6A75E] text-black text-sm uppercase tracking-wide"
-//           >
-//             Apply Now
-//           </a>
-
-//           <a
-//             href="#facilities"
-//             className="px-8 py-3 border border-white text-white text-sm uppercase tracking-wide"
-//           >
-//             Explore Campus
-//           </a>
-//         </div>
-//       </div>
-
-//       {/* Bottom Navigation Strip */}
-//       <div className="absolute bottom-0 left-0 w-full bg-[#1F1F1F]/90 backdrop-blur-md border-t border-white/10">
-//         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 text-center text-sm uppercase tracking-wide text-white">
-//           <a
-//             href="#about"
-//             className="py-5 border-r border-white/10 hover:text-[#C6A75E] transition"
-//           >
-//             About
-//           </a>
-
-//           <a
-//             href="#admissions"
-//             className="py-5 border-r border-white/10 hover:text-[#C6A75E] transition"
-//           >
-//             Admissions
-//           </a>
-
-//           <a
-//             href="#facilities"
-//             className="py-5 border-r border-white/10 hover:text-[#C6A75E] transition"
-//           >
-//             Facilities
-//           </a>
-
-//           <a href="#contact" className="py-5 hover:text-[#C6A75E] transition">
-//             Contact
-//           </a>
-//         </div>
-//       </div>
-
-//       {/* Scroll Indicator */}
-//       <motion.div
-//         animate={{ y: [0, 10, 0] }}
-//         transition={{ duration: 2, repeat: Infinity }}
-//         className="absolute bottom-24 left-1/2 -translate-x-1/2 text-white"
-//       >
-//         <ChevronDown size={28} />
-//       </motion.div>
-//     </section>
-//   );
-// }
-
-// export default Hero;

@@ -7,7 +7,7 @@ const TopBar = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="w-full bg-[#373B62] text-white text-xs border-b border-black/5"
+      className="w-full bg-[#373B62] text-white  border-b border-black/5"
     >
       <div className="max-w-7xl mx-auto px-6 py-1 flex items-center justify-between">
         {/* Logo */}
@@ -31,14 +31,14 @@ const TopBar = () => {
 
         {/* Contact */}
         <div className="hidden sm:flex items-center gap-6 text-white">
-          <div className="flex items-center gap-2 hover:text-[#f7ce83] transition-colors">
+          <div className="flex text-base items-center gap-2 hover:text-[#f7ce83] transition-colors">
             <Phone size={14} className="text-[#f7ce83]" />
-            <span>+91 98765 43210</span>
+            <span>+91 9109908802</span>
           </div>
 
-          <div className="flex items-center gap-2 hover:text-[#f7ce83] transition-colors">
+          <div className="flex text-base items-center gap-2 hover:text-[#f7ce83] transition-colors">
             <Mail size={14} className="text-[#f7ce83]" />
-            <span>info@pakizaschool.com</span>
+            <span>cbsepakizapublicschool@gmail.com</span>
           </div>
         </div>
       </div>

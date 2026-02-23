@@ -31,64 +31,86 @@ const LeadershipMessage = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-10 bg-white px-4 md:px-10">
+    <section className="py-12 bg-white px-4 md:px-10">
       <div className="max-w-7xl mx-auto">
         {/* Tabs */}
-        <div className="flex justify-center  mb-12">
-          <div className="flex bg-[#0B1F4B]/5 p-1 rounded-sm">
+        <div className="flex justify-center mb-8">
+          <div className="flex bg-[#0B1F4B]/5 p-1 rounded-md">
             {messages.map((item, index) => (
               <button
                 key={item.role}
                 onClick={() => setActive(index)}
-                className={`px-6 py-2 text-sm md:text-base rounded-sm transition-all duration-300 font-medium
-                  ${
-                    active === index
-                      ? "bg-[#0B1F4B] text-white shadow-md"
-                      : "text-[#0B1F4B] hover:bg-[#0B1F4B]/10"
-                  }`}
+                className={`px-5 py-2 text-sm rounded-md transition-all duration-300 font-medium
+              ${
+                active === index
+                  ? "bg-[#0B1F4B] text-white shadow"
+                  : "text-[#0B1F4B] hover:bg-[#0B1F4B]/10"
+              }`}
               >
-                {item.role}'s Message
+                {item.role}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Content */}
-        <div className="grid md:grid-cols-2 gap-12 items-center bg-white rounded-2xl shadow-sm overflow-hidden">
+        {/* Content Box */}
+        <div className="grid md:grid-cols-2 items-stretch bg-white rounded-2xl shadow-sm overflow-hidden min-h-95">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="p-10"
+              className="p-8 flex flex-col justify-between"
             >
-              <p className="text-gray-600 leading-relaxed text-sm md:text-lg mb-6">
-                {messages[active].text}
-              </p>
+              {/* Quote */}
+              <div>
+                <div className="text-5xl text-[#f7ce83] leading-none mb-4">
+                  “
+                </div>
 
-              <h4 className="text-lg font-semibold text-[#0B1F4B]">
-                {messages[active].name}
-              </h4>
-              <h4>{messages[active].role}</h4>
+                <p className="text-black leading-relaxed text-sm md:text-base mb-6">
+                  {messages[active].text}
+                </p>
 
-              <button
-                onClick={() => navigate(messages[active].link)}
-                className="mt-4 text-sm font-medium text-[#fbbd4b] hover:text-[#0B1F4B] transition"
-              >
-                Read Full Message →
-              </button>
+                {/* Extra Content */}
+                <ul className="text-sm text-black space-y-2 mb-6">
+                  <li>• Commitment to academic excellence</li>
+                  <li>• Focus on character & discipline</li>
+                  <li>• Encouraging leadership & innovation</li>
+                </ul>
+              </div>
+
+              {/* Name + CTA */}
+              <div>
+                <h4 className="text-lg font-semibold text-[#0B1F4B]">
+                  {messages[active].name}
+                </h4>
+                <p className="text-sm text-gray-500 mb-3">
+                  {messages[active].role}
+                </p>
+
+                <button
+                  onClick={() => navigate(messages[active].link)}
+                  className="text-sm font-medium text-[#fbbd4b] hover:text-[#0B1F4B] transition"
+                >
+                  Read Full Message →
+                </button>
+              </div>
             </motion.div>
           </AnimatePresence>
 
           {/* Image */}
-          <div className="h-75 md:h-110">
+          <div className="relative">
             <img
               src={messages[active].image}
               alt={messages[active].role}
-              className="w-full h-full object-cover"
+              className="w-full h-120 object-cover"
             />
+
+            {/* Overlay gradient for depth */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </div>
         </div>
       </div>

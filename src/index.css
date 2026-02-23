@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 * {
-  font-family: "General Sans", sans-serif;
+  /* font-family: "General Sans", sans-serif; */
+  font-family: "Supreme", sans-serif;
 }
 .stroke-text {
   -webkit-text-stroke: 0.1px white;
 }
 
-html {
+html {  
   scroll-behavior: smooth;
 }

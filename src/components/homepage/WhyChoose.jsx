@@ -99,41 +99,58 @@ const ParentPromise = () => {
           }}
           viewport={{ once: false, amount: 0.3 }}
           className="bg-white 
-             rounded-t-[40px] shadow-xl px-4 md:px-10 py-12 
+             rounded-t-[40px] px-4 md:px-10 py-12 
              max-w-7xl"
         >
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* LEFT SIDE */}
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-black mb-3 leading-tight">
-                Why Parents Choose <br />
-                <span className="text-[#c9a227]">Pakiza Public School</span>
-              </h3>
+            <div
+              className="relative h-120 rounded-tl-3xl py-10 px-6 md:px-16 bg-cover bg-center"
+              style={{ backgroundImage: "url('/images/whychooseus.jpg')" }}
+            >
+              {/* Background Logo */}
+              {/* <img
+                src="/images/whychooseus.jpg"
+                alt="PPS Logo"
+                className="absolute -top-20 
+               w-40 md:w-56 lg:w-340 -right-80
+               opacity-100 
+               pointer-events-none 
+               select-none"
+              /> */}
 
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                Choosing the right school is one of the most important decisions
-                for your child’s future. We combine academic excellence,
-                discipline, safety and holistic growth to nurture confident,
-                responsible individuals ready for tomorrow.
-              </p>
+              {/* Content */}
+              {/* <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-bold text-black mb-3 leading-tight">
+                  Why Parents Choose <br />
+                  <span className="text-[#c9a227]">Pakiza Public School</span>
+                </h3>
 
-              <button
-                className="group mt-4 px-8 py-3 bg-[#021c53] text-white 
-             rounded-md transition-all duration-300
-             flex items-center gap-2 overflow-hidden"
-              >
-                <span className="transition-all duration-300">
-                  Schedule a Campus Visit
-                </span>
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                  Choosing the right school is one of the most important
+                  decisions for your child’s future. We combine academic
+                  excellence, discipline, safety and holistic growth to nurture
+                  confident, responsible individuals ready for tomorrow.
+                </p>
 
-                <ArrowRight
-                  size={18}
-                  className="opacity-0 -translate-x-2 
-               transition-all duration-300
-               group-hover:opacity-100 
-               group-hover:translate-x-0"
-                />
-              </button>
+                <button
+                  className="group mt-4 px-8 py-3 bg-[#021c53] text-white 
+                 rounded-md transition-all duration-300
+                 flex items-center gap-2 overflow-hidden"
+                >
+                  <span className="transition-all duration-300">
+                    Schedule a Campus Visit
+                  </span>
+
+                  <ArrowRight
+                    size={18}
+                    className="opacity-0 -translate-x-2 
+                   transition-all duration-300
+                   group-hover:opacity-100 
+                   group-hover:translate-x-0"
+                  />
+                </button>
+              </div> */}
             </div>
 
             {/* RIGHT SIDE – Compact Highlights */}

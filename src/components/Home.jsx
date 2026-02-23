@@ -4,6 +4,7 @@ import About from "./homepage/About";
 import FacilitiesSection from "./homepage/FacilitiesSection";
 import WhyChoose from "./homepage/WhyChoose";
 import NewsSection from "./homepage/NewsSection";
+import ReviewsSection from "./homepage/ReviewSection";
 
 const Home = () => {
   return (
@@ -11,8 +12,9 @@ const Home = () => {
       <Hero />
       <About />
       <FacilitiesSection />
-      <WhyChoose/>
-      <NewsSection/>
+      <WhyChoose />
+      <NewsSection />
+      <ReviewsSection />
     </>
   );
 };

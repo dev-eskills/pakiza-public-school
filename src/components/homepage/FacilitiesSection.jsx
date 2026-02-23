@@ -1,5 +1,13 @@
 import { motion } from "framer-motion";
-import { Microscope, Dumbbell, Monitor, Bus, Library } from "lucide-react";
+import {
+  Bus,
+  BookOpen,
+  Trophy,
+  Theater,
+  Laptop,
+  FlaskConical,
+  Presentation,
+} from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -14,46 +22,46 @@ const HomeFacilities = () => {
   // ✅ Data stored in variable
   const facilitiesData = [
     {
-      icon: Microscope,
-      title: "Advanced Science Laboratories",
-      desc: "Well-equipped Physics, Chemistry, and Biology labs designed to foster practical understanding and scientific curiosity.",
+      icon: FlaskConical,
+      title: "State-of-the-Art Science Laboratories",
+      desc: "Our fully equipped Physics, Chemistry, and Biology laboratories provide students with hands-on experimental learning experiences. Designed to meet CBSE standards, these labs encourage scientific inquiry, analytical thinking, and real-world application of theoretical concepts in a safe and supervised environment.",
       image: "/images/sciencelab.png",
     },
     {
-      icon: Monitor,
-      title: "Computer Laboratory",
-      desc: "Modern computer lab with updated systems and high-speed connectivity to enhance digital literacy and technical skills.",
+      icon: Laptop,
+      title: "Computer Labs",
+      desc: "Equipped with advanced computer systems, high-speed internet connectivity, and updated educational software, our computer lab nurtures digital literacy and coding skills. Students are introduced to emerging technologies, research tools, and responsible digital practices that prepare them for a technology-driven future.",
       image: "/images/computerlab.jpg",
     },
     {
-      icon: Monitor,
-      title: "Interactive Classrooms",
-      desc: "Spacious, technology-enabled classrooms that create an engaging and focused learning environment.",
+      icon: Presentation,
+      title: "Smart & Interactive Classrooms",
+      desc: "Our spacious, technology-enabled classrooms integrate smart boards, multimedia tools, and collaborative learning methods. These interactive spaces enhance engagement, improve concept clarity, and create a dynamic academic atmosphere where every student can actively participate and excel.",
       image: "/images/classroom.jpg",
     },
-     {
-      icon: Library,
-      title: "Cultural & School Events",
-      desc: "Annual functions, competitions, and celebrations that nurture creativity, confidence, and holistic development.",
+    {
+      icon: Theater,
+      title: "Cultural & Co-Curricular Events",
+      desc: "Through annual functions, competitions, debates, art festivals, and celebration of national events, we foster creativity and confidence in our students. These vibrant activities promote teamwork, leadership, and holistic personality development beyond the classroom.",
       image: "/images/events.webp",
     },
-    // {
-    //   icon: Dumbbell,
-    //   title: "Sports & Physical Education",
-    //   desc: "Comprehensive indoor and outdoor sports facilities that promote teamwork, discipline, and physical well-being.",
-    //   image: "/images/sports.jpg",
-    // },
     {
       icon: Bus,
-      title: "Safe & Reliable Transport",
-      desc: "GPS-enabled buses with trained staff ensuring secure and punctual transportation for students.",
+      title: "Safe Transportation",
+      desc: "Our fleet of well-maintained school buses ensures safe and punctual transportation across the city. Each vehicle is GPS-enabled and supervised by trained staff, providing parents with peace of mind and students with a secure commuting experience.",
       image: "/images/banner3.jpg",
     },
-   {
-      icon: Dumbbell,
-      title: "Sports & Physical Education",
-      desc: "Comprehensive indoor and outdoor sports facilities that promote teamwork, discipline, and physical well-being.",
+    {
+      icon: Trophy,
+      title: "Comprehensive Sports & Fitness Facilities",
+      desc: "We provide extensive indoor and outdoor sports infrastructure including playgrounds and structured physical education programs. Through athletics and team sports, students develop discipline, teamwork, resilience, and a healthy competitive spirit.",
       image: "/images/sports.jpg",
+    },
+    {
+      icon: BookOpen,
+      title: "Library & Reading Hub",
+      desc: "Our library serves as a knowledge center with an extensive collection of academic resources, reference materials, fiction, and periodicals. It cultivates reading habits, research skills, and intellectual curiosity in a calm and inspiring environment.",
+      image: "/images/library.JPG",
     },
   ];
   return (

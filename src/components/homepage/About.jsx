@@ -68,16 +68,24 @@ const About = () => {
                 Shaping Tomorrow's Leaders
               </h3>
 
-              <p className="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
-                Founded with a mission to make quality education accessible,
-                Pakiza Public School has grown into one of Indore's most trusted
-                institutions — serving 1,500+ students with dedication across
-                three campuses.
+              <p className="text-gray-600 leading-relaxed mb-2 text-sm md:text-base">
+                Established in 1999, Pakiza Public School has grown into one of
+                Indore’s most respected CBSE institutions. With over 25 years of
+                academic excellence, we are committed to nurturing confident,
+                disciplined, and responsible global citizens.
+              </p>
+
+              <p className="text-gray-600 leading-relaxed mb-2 text-sm md:text-base">
+                Our campuses combine modern infrastructure, experienced faculty,
+                and value-based education to create a balanced learning
+                environment where students excel academically while developing
+                strong moral character.
               </p>
 
               <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-                Our pedagogy blends academic excellence with moral development,
-                preparing students not just for exams, but for life.
+                We believe education is not just about marks — it is about
+                shaping personalities, encouraging curiosity, and building
+                leadership skills for lifelong success.
               </p>
             </motion.div>
 
@@ -149,6 +157,40 @@ const About = () => {
                 <div className="mt-6 h-px bg-linear-to-r from-[#f7ce83] via-[#0B1F4B]/30 to-transparent" />
               </motion.div>
             ))}
+          </div>
+
+          {/* Mission & Vision */}
+          <div className="grid md:grid-cols-2 gap-5 mt-6">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="bg-[#0B1F4B] text-white p-5 rounded-xl"
+            >
+              <h3 className="text-2xl font-semibold mb-4">Our Mission</h3>
+              <p className="text-blue-100 text-sm md:text-base leading-relaxed">
+                To provide holistic education rooted in discipline, integrity,
+                and academic rigor — empowering students to become responsible
+                citizens and future leaders.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="bg-[#f7ce83]/10 p-8 rounded-xl"
+            >
+              <h3 className="text-2xl font-semibold text-[#0B1F4B] mb-4">
+                Our Vision
+              </h3>
+              <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                To be a center of excellence in education, fostering innovation,
+                character development, and academic brilliance in every child.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>

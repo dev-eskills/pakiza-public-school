@@ -124,6 +124,7 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
+      
       <section className="py-24 px-6 md:px-6 bg-linear-to-b from-white to-[#fffefb] relative">
         <div className="max-w-7xl mx-auto relative">
           {/* Vertical Timeline Line */}
