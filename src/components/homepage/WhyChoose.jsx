@@ -8,6 +8,7 @@ import {
   BookOpenCheck,
   ArrowRight,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const ParentPromise = () => {
   const features = [
@@ -43,6 +44,17 @@ const ParentPromise = () => {
     },
   ];
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
   return (
     <section className="relative w-full">
       {/* TOP IMAGE SECTION (Fully Visible First) */}
@@ -83,20 +95,9 @@ const ParentPromise = () => {
       {/* parallax */}
       <div className="relative -mt-20 md:-mt-28 flex justify-center">
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 80,
-            width: "85%",
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            width: "100%",
-          }}
-          transition={{
-            duration: 0.9,
-            ease: "easeInOut",
-          }}
+          initial={!isMobile ? { opacity: 0, y: 80, width: "85%" } : false}
+          whileInView={ { opacity: 1, y: 0, width: "100%" } }
+          transition={!isMobile ? { duration: 0.9, ease: "easeInOut" } : {}}
           viewport={{ once: false, amount: 0.3 }}
           className="bg-white 
              rounded-t-[40px] px-4 md:px-10 py-12 

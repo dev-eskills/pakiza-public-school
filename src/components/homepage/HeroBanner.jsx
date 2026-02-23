@@ -24,7 +24,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-auto sm:min-h-screen flex py-15 justify-center overflow-hidden"
     >
       {/* Background Slider */}
       {/* <AnimatePresence mode="wait">
@@ -191,7 +191,7 @@ drop-shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
       </div>
 
       {/* Scroll Indicator */}
-      <div className=" hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 text-white flex-col items-center gap-2">
+      <div className=" hidden sm:flex absolute bottom-30 left-1/2 -translate-x-1/2 text-white flex-col items-center gap-2">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
         <ChevronDown />
       </div>
