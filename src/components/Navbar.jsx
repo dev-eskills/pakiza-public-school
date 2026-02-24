@@ -27,12 +27,12 @@ const NAV = [
       { name: "Management Committee", link: "/campus/branch-3" },
     ],
   },
-  { name: "Gallery", link: "/Gallery" },
+  { name: "Gallery", link: "/gallery" },
   { name: "Staff", link: "/Staff" },
   // { name: "Students", link: "/Students" },
   { name: "Admission", link: "/admission" },
   { name: "Fees", link: "/Fees" },
-  { name: "Privacy", link: "/Privacy" },  
+  { name: "Privacy", link: "/Privacy" },
 ];
 
 const Navbar = () => {

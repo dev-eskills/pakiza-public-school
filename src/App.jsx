@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import MainCampus from "./components/MainBranch";
 import Admission from "./components/Admission";
+import Gallery from "./components/Gallery";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/admission" element={<Admission />} />
         <Route path="/main-campus" element={<MainCampus />} />
         <Route path="/branches/:branch" element={<BranchPage />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
       <Footer />
     </>

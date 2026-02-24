@@ -61,7 +61,7 @@ const HomeFacilities = () => {
       icon: BookOpen,
       title: "Library & Reading Hub",
       desc: "Our library serves as a knowledge center with an extensive collection of academic resources, reference materials, fiction, and periodicals. It cultivates reading habits, research skills, and intellectual curiosity in a calm and inspiring environment.",
-      image: "/images/library.JPG",
+      image: "/images/library.jpg",
     },
   ];
   return (

@@ -4,6 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 const messages = [
   {
+    role: "Chairman",
+    name: "Mr. Maqsood Gori",
+    link: "/about/#chairman",
+    image: "/images/chairmanpakiza.webp",
+    text: `Our vision is to build an institution where discipline meets compassion and ambition meets opportunity, shaping responsible global citizens.`,
+  },
+  {
     role: "Principal",
     name: "Mr. Ashraf.P",
     link: "/about/#principal",
@@ -16,13 +23,6 @@ const messages = [
     link: "/about/#director",
     image: "/images/directorpakiza.jpg",
     text: `Education at Pakiza Public School is rooted in values, innovation, and excellence. We prepare learners not just academically, but for life with confidence and integrity.`,
-  },
-  {
-    role: "Chairman",
-    name: "Mr. Maqsood Gori",
-    link: "/about/#chairman",
-    image: "/images/chairmanpakiza.webp",
-    text: `Our vision is to build an institution where discipline meets compassion and ambition meets opportunity, shaping responsible global citizens.`,
   },
 ];
 

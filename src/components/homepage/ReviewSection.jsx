@@ -26,14 +26,14 @@ const testimonials = [
   {
     name: "Muhafiza Arsh",
     role: "Student",
-    video: "/videos/review4.mp4",
+    video: "/videos/review1.mp4",
     thumbnail:
       "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
   },
   {
     name: "Muhafiza Arsh",
     role: "Student",
-    video: "/videos/review4.mp4",
+    video: "/videos/review1.mp4",
     thumbnail:
       "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
   },
@@ -121,6 +121,7 @@ export default function ReviewsSection() {
                   playsInline
                   onEnded={goNext}
                   poster={item.thumbnail}
+                  muted
                   className="w-full h-full object-cover"
                 >
                   <source src={item.video} type="video/mp4" />

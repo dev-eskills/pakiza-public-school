@@ -50,7 +50,7 @@ We offer a blend of modern and moral education, integrating contemporary ideas w
 
   khajrana: {
     name: "Pakiza School Branch 2 – Khajrana",
-    heroImage: "/images/banner2.jpg",
+    heroImage: "/images/PTM.jpg",
 
     description: `
 Welcome to Pakiza School Branch 2 – Khajrana.
@@ -82,7 +82,7 @@ We provide a balanced environment where academic excellence meets moral values. 
   },
   "green-park": {
     name: "Pakiza School Branch 3 – Green Park",
-    heroImage: "/images/banner3.jpg",
+    heroImage: "/images/banner7.jpg",
 
     description: `
 Welcome to Pakiza School, a joint venture of Pakiza Edu Group and Markaz.
@@ -204,7 +204,7 @@ const BranchPage = () => {
           ))}
         </div>
       </section>
-      
+
       <section className="bg-linear-to-tr from-[#fdfaf4] to-white py-14">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
           {/* LEFT SIDE */}

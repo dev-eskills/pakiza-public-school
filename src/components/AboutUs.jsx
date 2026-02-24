@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const leadershipData = [
   {
     id: 1,
@@ -43,6 +43,20 @@ He emphasizes academic rigor combined with moral values, ensuring that students 
 
 His philosophy centers on inspiring curiosity, encouraging critical thinking, and preparing students to confidently shape their future — and the future of the nation.
     `,
+  },
+];
+const branches = [
+  {
+    name: "Pakiza School Branch 1 - Manik Bagh",
+    slug: "manik-bagh",
+  },
+  {
+    name: "Pakiza School Branch 2 - Khajrana",
+    slug: "khajrana",
+  },
+  {
+    name: "Pakiza School Branch 3 - Green Park",
+    slug: "green-park",
   },
 ];
 export default function AboutUs() {
@@ -106,31 +120,30 @@ export default function AboutUs() {
           </h3>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              "Pakiza School Branch 1 - Manik Bagh",
-              "Pakiza School Branch 2 - Khajrana",
-              "Pakiza School Branch 3 - Green Park",
-            ].map((branch, index) => (
-              <div
+            {branches.map((branch, index) => (
+              <Link
+                to={`/branches/${branch.slug}`}
                 key={index}
-                className="relative flex flex-col items-center text-center"
+                className="relative flex flex-col items-center text-center hover:scale-102 transition duration-300"
               >
-                <div className="text-6xl  font-bold text-white mb-4">
+                <div className="text-6xl font-bold text-white mb-4">
                   0{index + 1}
                 </div>
-                <h4 className="text-xl max-w-55 font-semibold">{branch}</h4>
-              </div>
+                <h4 className="text-xl max-w-55 font-semibold">
+                  {branch.name}
+                </h4>
+              </Link>
             ))}
           </div>
         </div>
       </section>
-      
-      <section className="py-24 px-6 md:px-6 bg-linear-to-b from-white to-[#fffefb] relative">
+
+      <section className="sm:py-14 px-6 md:px-6 bg-linear-to-b from-white to-[#fffefb] relative">
         <div className="max-w-7xl mx-auto relative">
           {/* Vertical Timeline Line */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#0b1f4b71]"></div>
 
-          <div className="space-y-18">
+          <div className="space-y-6 sm:space-y-18">
             {leadershipData.map((leader, index) => {
               const isReverse = index % 2 !== 0;
 
@@ -144,7 +157,7 @@ export default function AboutUs() {
                   transition={{ duration: 0.6 }}
                   className={`relative flex flex-col md:flex-row ${
                     isReverse ? "md:flex-row-reverse" : ""
-                  } items-center gap-14 scroll-mt-28`}
+                  } items-center gap-3 sm:gap-14 scroll-mt-28`}
                 >
                   {/* Timeline Dot */}
                   <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-10 w-6 h-6 bg-blue-950 rounded-full border-4 border-white z-10"></div>
@@ -182,7 +195,7 @@ export default function AboutUs() {
       </section>
 
       {/* ================= FOOTER STATEMENT ================= */}
-      <section className="bg-linear-to-tr from-[#0B1F4B] via-[#102a66] to-[#0d1f4a] py-20 px-6 md:px-16 text-center text-white">
+      <section className="bg-linear-to-tr from-[#0B1F4B] via-[#102a66] to-[#0d1f4a] sm:py-20 py-10 px-6 md:px-16 text-center text-white">
         <h3 className="text-2xl md:text-3xl font-semibold max-w-4xl mx-auto leading-relaxed">
           Empowering Young Minds Across Indore Through Education, Discipline,
           and Excellence.

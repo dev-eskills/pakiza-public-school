@@ -39,7 +39,7 @@ const AnimatedText = React.forwardRef(
           {/* UNDERLINE */}
           <motion.svg
             className={cn(
-              "absolute left-0 -bottom-3 w-full h-5",
+              "absolute left-1/2 -translate-x-1/2 -bottom-2 w-28 sm:w-full md:w-full h-4 sm:h-4",
               underlineClassName,
             )}
             viewBox="0 0 100 20"
@@ -48,11 +48,9 @@ const AnimatedText = React.forwardRef(
             <motion.path
               d="M 0 15 Q 25 5 50 15 Q 75 25 100 15"
               stroke="currentColor"
-              strokeWidth="3"
+              strokeWidth="2"
               fill="transparent"
-              animate={{
-                pathLength: [0, 1],
-              }}
+              animate={{ pathLength: [0, 1] }}
               transition={{
                 duration: underlineDuration * 3,
                 ease: "easeInOut",

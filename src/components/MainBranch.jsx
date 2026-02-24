@@ -9,6 +9,7 @@ import {
   Globe,
   ArrowRight,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function MainCampus() {
   const containerRef = useRef(null);
@@ -159,9 +160,9 @@ export default function MainCampus() {
         </div>
         <div>
           {" "}
-          <button className="w-full py-3 flex items-center justify-center gap-2 bg-[#0B1F3B] text-white font-semibold  transition-transform duration-300">
+          <Link to={"/admission"} className="w-full py-3 flex items-center justify-center gap-2 bg-[#0B1F3B] text-white font-semibold  transition-transform duration-300">
             <span> Admissions Open 2026 – 27</span> <ArrowRight size={18} />
-          </button>
+          </Link>
         </div>
       </section>
       {/* --- BENTO GRID HIGHLIGHTS --- */}

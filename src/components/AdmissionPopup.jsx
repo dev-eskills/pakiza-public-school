@@ -91,7 +91,7 @@ const AdmissionPopup = () => {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
-                    to="/admissions"
+                    to="/admission"
                     className="
                       flex-1 flex items-center justify-center gap-2
                       bg-[#000e51] text-white font-semibold 
@@ -101,7 +101,7 @@ const AdmissionPopup = () => {
                     "
                   >
                     <GraduationCap size={18} />
-                    Apply Now
+                    Apply Now   
                   </Link>
 
                   <Link

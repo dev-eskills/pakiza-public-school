@@ -12,7 +12,7 @@ const NavDropdown = ({ item }) => {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button className="flex items-center gap-1 text-white text-[14px] font-medium tracking-wide duration-300">
+      <button className="flex items-center gap-1 text-white text-[16px] font-medium tracking-wide duration-300">
         {item.name}
         <ChevronDown size={16} />
       </button>

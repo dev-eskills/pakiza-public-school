@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 
 const images = [
-  "/images/banner8.JPG",
+  "/images/banner8.jpg",
   "/images/banner11.jpg",
   "/images/sports.jpg",
   "/images/classroom.jpg",
