@@ -59,7 +59,7 @@ const ParentPromise = () => {
     <section className="relative w-full">
       {/* TOP IMAGE SECTION (Fully Visible First) */}
       <div
-        className="h-[55vh] md:h-[100vh] bg-fixed bg-center bg-cover relative"
+        className="h-[55vh] md:h-screen bg-fixed bg-center bg-cover relative"
         style={{ backgroundImage: `url('/images/banner5.jpg')` }}
       >
         <div className="absolute inset-0 bg-black/20" />
@@ -93,69 +93,25 @@ const ParentPromise = () => {
       </div>
 
       {/* parallax */}
-      <div className="relative -mt-20 md:-mt-28 flex justify-center">
+      <div className="relative -mt-20 md:-mt-38 flex justify-center">
         <motion.div
           initial={!isMobile ? { opacity: 0, y: 80, width: "85%" } : false}
-          whileInView={ { opacity: 1, y: 0, width: "100%" } }
+          whileInView={{ opacity: 1, y: 0, width: "100%" }}
           transition={!isMobile ? { duration: 0.9, ease: "easeInOut" } : {}}
           viewport={{ once: false, amount: 0.3 }}
           className="bg-white 
-             rounded-t-[40px] px-4 md:px-10 py-12 
+             rounded-t-[40px] px-4 md:px-10 py-5 sm:py-12 
              max-w-7xl"
         >
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* LEFT SIDE */}
             <div
-              className="relative h-120 rounded-tl-3xl py-10 px-6 md:px-16 bg-cover bg-center"
+              className="relative h-120 rounded-t-3xl sm:rounded-tl-3xl py-10 px-6 md:px-16 bg-cover bg-center"
               style={{ backgroundImage: "url('/images/whychooseus.jpg')" }}
-            >
-              {/* Background Logo */}
-              {/* <img
-                src="/images/whychooseus.jpg"
-                alt="PPS Logo"
-                className="absolute -top-20 
-               w-40 md:w-56 lg:w-340 -right-80
-               opacity-100 
-               pointer-events-none 
-               select-none"
-              /> */}
-
-              {/* Content */}
-              {/* <div className="relative z-10">
-                <h3 className="text-2xl md:text-3xl font-bold text-black mb-3 leading-tight">
-                  Why Parents Choose <br />
-                  <span className="text-[#c9a227]">Pakiza Public School</span>
-                </h3>
-
-                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                  Choosing the right school is one of the most important
-                  decisions for your child’s future. We combine academic
-                  excellence, discipline, safety and holistic growth to nurture
-                  confident, responsible individuals ready for tomorrow.
-                </p>
-
-                <button
-                  className="group mt-4 px-8 py-3 bg-[#021c53] text-white 
-                 rounded-md transition-all duration-300
-                 flex items-center gap-2 overflow-hidden"
-                >
-                  <span className="transition-all duration-300">
-                    Schedule a Campus Visit
-                  </span>
-
-                  <ArrowRight
-                    size={18}
-                    className="opacity-0 -translate-x-2 
-                   transition-all duration-300
-                   group-hover:opacity-100 
-                   group-hover:translate-x-0"
-                  />
-                </button>
-              </div> */}
-            </div>
+            ></div>
 
             {/* RIGHT SIDE – Compact Highlights */}
-            <div className="space-y-6">
+            <div className="space-y-7">
               {features.map((item, i) => (
                 <motion.div
                   key={item.title}

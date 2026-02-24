@@ -1,132 +1,149 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Mrs. Sharma",
-    role: "Parent",
-    video: "/videos/review1.mp4",
-  },
-  {
-    name: "Mr. Khan",
+    name: "Lubna Fazilat",
     role: "Parent",
     video: "/videos/review2.mp4",
+    // thumbnail:
+    //   "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=600&fit=crop",
   },
   {
-    name: "Aarav Mehta",
-    role: "Student",
-    video: "/videos/school-hero.mp4",
+    name: "Khyati Jain (Principle)",
+    role: "Parent",
+    video: "/videos/review3.mp4",
+    // thumbnail:
+    //   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
   },
+  {
+    name: "Muhafiza Arsh",
+    role: "Student",
+    video: "/videos/review1.mp4",
+    // thumbnail:
+    //   "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
+  },
+  {
+    name: "Muhafiza Arsh",
+    role: "Student",
+    video: "/videos/review4.mp4",
+    thumbnail:
+      "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
+  },
+  {
+    name: "Muhafiza Arsh",
+    role: "Student",
+    video: "/videos/review4.mp4",
+    thumbnail:
+      "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
+  },
+  // {
+  //   name: "Muhafiza Arsh",
+  //   role: "Student",
+  //   video: "/videos/review4.mp4",
+  //   thumbnail:
+  //     "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
+  // },
 ];
 
-const ReviewsSection = () => {
-  const containerRef = useRef(null);
-  const videoRefs = useRef([]);
-  const [activeIndex, setActiveIndex] = useState(testimonials.length - 1); // Start from RIGHT
+const TOTAL = testimonials.length;
 
-  // Play active video only
+export default function ReviewsSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const videoRefs = useRef([]);
+
   useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-      if (!video) return;
-      if (index === activeIndex) {
-        video.play();
+    videoRefs.current.forEach((vid, i) => {
+      if (!vid) return;
+      if (i === activeIndex) {
+        vid.currentTime = 0;
+        vid.play().catch(() => {});
       } else {
-        video.pause();
-        video.currentTime = 0;
+        vid.pause();
+        vid.currentTime = 0;
       }
     });
   }, [activeIndex]);
 
-  // Auto scroll when video ends
-  const handleVideoEnd = () => {
-    if (activeIndex > 0) {
-      setActiveIndex((prev) => prev - 1);
-    }
+  const goNext = () => {
+    setActiveIndex((prev) => (prev + 1) % TOTAL);
   };
 
-  // Scroll animation
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const cardWidth = container.offsetWidth * 0.6;
-    container.scrollTo({
-      left: cardWidth * activeIndex,
-      behavior: "smooth",
-    });
-  }, [activeIndex]);
-
   return (
-    <section className="bg-[#fdfaf4] py-32 ">
+    <section className="bg-white py-14 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <div className="mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#000e51]">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="mb-5"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-[#000e51] leading-tight">
             Voices of Our Community
+            <div className="w-2xl h-px bg-linear-to-r from-[#f7ce83] via-[#0B1F4B]/30 to-transparent mt-3 rounded" />
           </h2>
-          <div className="w-24 h-1 bg-[#000e51] mt-6"></div>
-        </div>
+        </motion.div>
 
-        {/* Horizontal Scroll */}
-        <div ref={containerRef} className="flex gap-12 overflow-x-hidden">
+        {/* Carousel */}
+        <div className="relative h-130 flex items-center justify-center">
           {testimonials.map((item, index) => {
-            const isActive = index === activeIndex;
+            let offset = index - activeIndex;
+
+            if (offset > TOTAL / 2) offset -= TOTAL;
+            if (offset < -TOTAL / 2) offset += TOTAL;
+            const isActive = offset === 0;
+            const absOffset = Math.abs(offset);
+
+            const xPercent = offset * 72;
+            const scale = isActive ? 1 : absOffset === 1 ? 0.82 : 0.68;
+            const opacity = isActive ? 1 : absOffset === 1 ? 0.9 : 0.6;
+            const zIndex = isActive ? 10 : absOffset === 1 ? 5 : 1;
+            const blur = isActive ? 0 : absOffset === 1 ? 1 : 2;
 
             return (
               <motion.div
                 key={index}
                 animate={{
-                  scale: isActive ? 1 : 0.9,
-                  opacity: isActive ? 1 : 0.5,
+                  x: `${xPercent}%`,
+                  scale,
+                  opacity,
+                  filter: `blur(${blur}px)`,
                 }}
-                transition={{ duration: 0.6 }}
-                className="min-w-[40%] md:min-w-[25%] bg-white rounded-3xl shadow-2xl border border-[#000e51]/10 relative group"
+                transition={{ type: "spring", stiffness: 260, damping: 32 }}
+                onClick={() => !isActive && setActiveIndex(index)}
+                className={`absolute w-70 h-115 rounded-3xl overflow-hidden 
+                bg-black cursor-pointer`}
+                style={{ zIndex }}
               >
-                {/* Video */}
-                <div className="overflow-hidden rounded-3xl">
-                  <video
-                    ref={(el) => (videoRefs.current[index] = el)}
-                    muted
-                    playsInline
-                    onEnded={handleVideoEnd}
-                    className="w-full h-[450px] object-cover"
-                  >
-                    <source src={item.video} type="video/mp4" />
-                  </video>
-                </div>
+                <video
+                  ref={(el) => (videoRefs.current[index] = el)}
+                  playsInline
+                  onEnded={goNext}
+                  poster={item.thumbnail}
+                  className="w-full h-full object-cover"
+                >
+                  <source src={item.video} type="video/mp4" />
+                </video>
 
-                {/* Hover Name Overlay */}
-                <AnimatePresence>
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileHover={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="absolute bottom-0 left-0 right-0 bg-[#000e51]/90 text-white p-6 opacity-0 group-hover:opacity-100 transition"
-                  >
-                    <h3 className="text-xl font-semibold">{item.name}</h3>
-                    <p className="text-sm text-gray-200">{item.role}</p>
-                  </motion.div>
-                </AnimatePresence>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+
+                {/* Name */}
+                <motion.div
+                  animate={{ y: isActive ? 0 : 8, opacity: isActive ? 1 : 0.6 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute bottom-0 left-0 right-0 p-5"
+                >
+                  <h3 className="text-white text-xl font-semibold">
+                    {item.name}
+                  </h3>
+                </motion.div>
               </motion.div>
             );
           })}
         </div>
-
-        {/* Dots Indicator */}
-        <div className="flex justify-center gap-3 mt-12">
-          {testimonials.map((_, index) => (
-            <div
-              key={index}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === activeIndex ? "bg-[#000e51] scale-125" : "bg-gray-300"
-              }`}
-            />
-          ))}
-        </div>
       </div>
     </section>
   );
-};
-
-export default ReviewsSection;
+}

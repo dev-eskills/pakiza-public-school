@@ -8,6 +8,11 @@ import SideBadge from "./components/ui/SideBadge";
 import AdmissionPopup from "./components/AdmissionPopup";
 import Contact from "./components/Contact";
 import BranchPage from "./components/BranchPage";
+import ScrollToTopButton from "./components/homepage/ScrollToTopButton";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+import MainCampus from "./components/MainBranch";
+import Admission from "./components/Admission";
 
 const App = () => {
   return (
@@ -16,12 +21,17 @@ const App = () => {
       <Navbar />
       <SideBadge />
       <AdmissionPopup />
+      <ScrollToTopButton />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admission" element={<Admission />} />
+        <Route path="/main-campus" element={<MainCampus />} />
         <Route path="/branches/:branch" element={<BranchPage />} />
       </Routes>
+      <Footer />
     </>
   );
 };

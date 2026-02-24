@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const SideBadge = () => {
   return (
-    <div className="fixed right-0 top-1/2 z-50 flex flex-col">
+    <div className="fixed right-0 -translate-y-1/5 top-1/2 z-50 flex flex-col">
       {/* Contact Badge */}
       <motion.div
         // whileHover={{ x: -8 }}

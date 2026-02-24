@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AnimatedText } from "../ui/AnimatedText";
 
 const banners = [
-  "/images/library.JPG",
+  // "/images/library.JPG",
   "/images/banner6.jpg",
   "/images/banner10.jpg",
-  "/images/banner9.JPG",
+  "/images/banner13.jpg",
 ];
 
 function Hero() {
@@ -27,7 +28,7 @@ function Hero() {
       className="relative h-auto sm:min-h-screen flex py-15 justify-center overflow-hidden"
     >
       {/* Background Slider */}
-      {/* <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
         <motion.div
           key={current}
           initial={{ opacity: 0, scale: 1.1 }}
@@ -36,9 +37,9 @@ function Hero() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${banners[current]})` }}
         />
-      </AnimatePresence> */}
+      </AnimatePresence>
 
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
         <motion.div
           key="video-bg"
           initial={{ opacity: 0 }}
@@ -58,7 +59,7 @@ function Hero() {
 
           <div className="absolute inset-0 bg-black/20"></div>
         </motion.div>
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/25" />
@@ -77,21 +78,28 @@ text-4xl sm:text-5xl md:text-6xl lg:text-7xl
 drop-shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
         >
           Empowering Young Minds at <br />
-          <span className="text-[#f7ce83] drop-shadow-[0_4px_15px_rgba(0,0,0,0.4)]">
+          {/* <span className="text-[#f7ce83] drop-shadow-[0_4px_15px_rgba(0,0,0,0.4)]">
             Pakiza Public School
+          </span> */}
+          <span className="flex items-center justify-center w-full gap-1">
+            <AnimatedText
+              underlineClassName="text-[#f7ce83] w-fit"
+              text="Pakiza Public School"
+              textClassName="text-[#f7ce83] text-6xl drop-shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
+            />
+            <motion.span
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="text-[#f7ce83]"
+            >
+              {" "}
+              .
+            </motion.span>
           </span>
-          <motion.span
-            animate={{ opacity: [1, 0, 1] }}
-            transition={{
-              duration: 1,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="text-[#f7ce83]"
-          >
-            {" "}
-            .
-          </motion.span>
         </h1>
 
         {/* Sub Heading */}
@@ -191,7 +199,7 @@ drop-shadow-[0_4px_15px_rgba(0,0,0,0.2)]"
       </div>
 
       {/* Scroll Indicator */}
-      <div className=" hidden sm:flex absolute bottom-30 left-1/2 -translate-x-1/2 text-white flex-col items-center gap-2">
+      <div className=" hidden sm:flex absolute bottom-22 left-1/2 -translate-x-1/2 text-white flex-col items-center gap-1">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
         <ChevronDown />
       </div>

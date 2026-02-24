@@ -65,11 +65,11 @@ const HomeFacilities = () => {
     },
   ];
   return (
-    <section className="py-14 bg-white px-4 md:px-10">
+    <section className="py-10 bg-white px-4 md:px-10">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0B1F4B] mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0B1F4B] mb-3">
             World-Class Campus Facilities
           </h2>
 

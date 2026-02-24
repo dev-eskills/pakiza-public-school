@@ -9,19 +9,30 @@ const NAV = [
   {
     name: "Campus",
     dropdown: [
-      { name: "Pakiza Main Campus", link: "/branches/main" },
-      { name: "Pakiza Branch II", link: "/branches/manik-bagh" },
-      { name: "Pakiza Branch III", link: "/campus/branch-3" },
+      { name: "Pakiza Main Campus", link: "/main-campus" },
+      { name: "Pakiza Branch I - Manik Bagh", link: "/branches/manik-bagh" },
+      { name: "Pakiza Branch II - Khjarana", link: "/branches/khajrana" },
+      { name: "Pakiza Branch III - Green Park", link: "/branches/green-park" },
     ],
   },
-  { name: "Academics", link: "/Academics" },
-  { name: "Branches", link: "/Branches" },
+  {
+    name: "Academics",
+    dropdown: [
+      { name: "Academic Calendar", link: "/branches/main" },
+      {
+        name: "CBSE Mandatory Public Disclosure",
+        link: "/branches/manik-bagh",
+      },
+      { name: "Book List", link: "/campus/branch-3" },
+      { name: "Management Committee", link: "/campus/branch-3" },
+    ],
+  },
   { name: "Gallery", link: "/Gallery" },
   { name: "Staff", link: "/Staff" },
-  { name: "Students", link: "/Students" },
-  { name: "Admission", link: "/Admission" },
+  // { name: "Students", link: "/Students" },
+  { name: "Admission", link: "/admission" },
   { name: "Fees", link: "/Fees" },
-  { name: "Privacy", link: "/Privacy" },
+  { name: "Privacy", link: "/Privacy" },  
 ];
 
 const Navbar = () => {

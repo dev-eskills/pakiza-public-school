@@ -45,7 +45,7 @@ const AdmissionPopup = () => {
               {/* Close Button */}
               <button
                 onClick={() => setOpen(false)}
-                className="absolute top-3 right-3 text-gray-600 hover:text-black transition"
+                className="absolute top-3 cursor-pointer  right-3 text-gray-600 hover:text-black transition"
               >
                 <X size={22} />
               </button>

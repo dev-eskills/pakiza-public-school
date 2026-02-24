@@ -43,9 +43,81 @@ We offer a blend of modern and moral education, integrating contemporary ideas w
     facebook: "https://www.facebook.com/pakizaplayschool",
     youtube: "https://www.youtube.com/@PakizaSchool",
     instagram: "https://www.instagram.com/pakizaschool",
+
+    mapEmbed:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.034335562974!2d75.855087!3d22.6897657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcf840891f21%3A0x25bd02ced10a135a!2sPakiza%20Public%20School!5e0!3m2!1sen!2sin!4v1771826699097!5m2!1sen!2sin",
+  },
+
+  khajrana: {
+    name: "Pakiza School Branch 2 – Khajrana",
+    heroImage: "/images/banner2.jpg",
+
+    description: `
+Welcome to Pakiza School Branch 2 – Khajrana.
+
+We provide a balanced environment where academic excellence meets moral values. Our mission is to nurture responsible individuals equipped with modern knowledge and strong character.
+    `,
+
+    vision:
+      "To inspire young minds through innovation, discipline, and holistic growth.",
+
+    mission:
+      "To cultivate confident learners prepared for academic and personal success.",
+
+    stats: [
+      { icon: Users, label: "1200+ Students" },
+      { icon: GraduationCap, label: "60+ Faculty" },
+      { icon: BookOpen, label: "Digital Learning" },
+      { icon: Trophy, label: "Award-Winning Campus" },
+    ],
+
+    address: "70, Habib Colony, Khajrana, Indore, 452016",
+    phone: "+91 9644006856, +91 9644006857",
+    email: "pps.channel.indore@gmail.com",
+    facebook: "https://www.facebook.com/pakizaschool",
+    youtube: "https://www.youtube.com/@PakizaSchool",
+    instagram: "https://www.instagram.com/pakizaschool",
+    mapEmbed:
+      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d942018.2995030741!2d75.917222!3d22.737198!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962e3003ec92635%3A0x5cecf029fa433e89!2sPakiza%20School-%202%20Khajrana!5e0!3m2!1sen!2sin!4v1771852660171!5m2!1sen!2sin",
+  },
+  "green-park": {
+    name: "Pakiza School Branch 3 – Green Park",
+    heroImage: "/images/banner3.jpg",
+
+    description: `
+Welcome to Pakiza School, a joint venture of Pakiza Edu Group and Markaz.
+
+We offer a blend of modern and moral education, integrating contemporary ideas with timeless values for a transformative learning experience. Our holistic approach nurtures each student's growth, fostering curiosity, critical thinking, and integrity. By shaping future leaders, we prepare individuals ready to make a positive impact.
+  `,
+
+    vision:
+      "To develop intellectually strong, morally grounded, and socially responsible individuals.",
+
+    mission:
+      "To provide a transformative educational experience that blends modern knowledge with timeless values.",
+
+    stats: [
+      { icon: Users, label: "1000+ Students" },
+      { icon: GraduationCap, label: "55+ Faculty" },
+      { icon: BookOpen, label: "Advanced Learning Labs" },
+      { icon: Trophy, label: "Excellence in Academics" },
+    ],
+
+    address: "Near 5000 Multi, Green Park Colony, Indore, India, 452002",
+
+    phone: "+91 97520005500, +91 9826926336",
+
+    email: "pps.channel.indore@gmail.com",
+
+    facebook: "https://www.facebook.com/pakizaschool",
+
+    youtube: "http://www.youtube.com/@PakizaSchool",
+
+    instagram: "https://www.instagram.com/pakizaschool",
+    mapEmbed:
+      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d942208.0059381237!2d75.806202!3d22.709649!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fe77d1c8a265%3A0xa57c69085987e0a4!2sPakiza%20School%20(PS-3)!5e0!3m2!1sen!2sin!4v1771913601757!5m2!1sen!2sin",
   },
 };
-
 const BranchPage = () => {
   const { branch } = useParams();
   const data = branchesData[branch];
@@ -88,7 +160,7 @@ const BranchPage = () => {
       </section>
 
       {/* ABOUT (UNCHANGED - AS YOU LIKED) */}
-      <section className="relative max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-10">
+      <section className="relative max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-10 ">
         <img
           src="/images/pakizalogo2.png"
           alt="PPS Logo"
@@ -96,7 +168,7 @@ const BranchPage = () => {
         />
 
         <div>
-          <h2 className="text-3xl font-bold text-[#000e51] mb-6">
+          <h2 className="text-3xl font-bold text-[#000e51] mb-3">
             About This Branch
           </h2>
           <p className="text-gray-700 leading-relaxed whitespace-pre-line">
@@ -132,95 +204,12 @@ const BranchPage = () => {
           ))}
         </div>
       </section>
-
-      {/* ACADEMIC & ACTIVITY SPLIT SECTION */}
-      <section className="relative pt-30 pb-20 bg-linear-to-br from-[#f8fafc] via-white to-[#eef3ff] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 space-y-14">
-          {/* ================= ACADEMIC SECTION ================= */}
-          <div className="relative grid md:grid-cols-2 gap-10 items-center">
-            {/* Large Background Text */}
-            <h1 className="absolute -top-20 left-0 text-[80px] font-extrabold text-[#B29563]/40  hidden md:block select-none">
-              ACADEMICS
-            </h1>
-
-            {/* Image */}
-            <div className="relative group">
-              <div className="absolute inset-0 bg-[#000e51]/10 rounded-md"></div>
-              <img
-                src="/images/academics.JPG"
-                alt="Academics"
-                className="relative w-full h-95 object-cover rounded-md transition duration-700 "
-              />
-            </div>
-
-            {/* Content */}
-            <div>
-              <h2 className="text-4xl font-bold text-[#000e51] mb-3">
-                Academic Excellence
-              </h2>
-
-              <div className="w-content h-0.5 bg-linear-to-r from-[#f7ce83] via-[#0B1F4B]/30 to-transparent mb-6"></div>
-
-              <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-                Our curriculum blends conceptual clarity with real-world
-                exposure. Through smart classrooms and interactive digital
-                tools, students develop analytical thinking and problem-solving
-                abilities.
-              </p>
-
-              <p className="text-gray-600 ">
-                Continuous assessments, project-based learning, and mentorship
-                from experienced faculty ensure every child progresses with
-                confidence.
-              </p>
-            </div>
-          </div>
-
-          {/* ================= CO-CURRICULAR SECTION ================= */}
-          <div className="relative grid md:grid-cols-2 gap-16 items-center">
-            {/* Large Background Text */}
-            <h1 className="absolute -top-19 right-0 text-[80px] font-extrabold text-[#B29563]/40 hidden md:block select-none">
-              GROWTH
-            </h1>
-
-            {/* Content */}
-            <div>
-              <h2 className="text-4xl font-bold text-[#000e51] mb-3">
-                Co-Curricular Growth
-              </h2>
-
-              <div className="w-content h-0.5 bg-linear-to-r from-[#f7ce83] via-[#0B1F4B]/30 to-transparent mb-6"></div>
-
-              <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-                Education at Pakiza goes beyond textbooks. Students actively
-                participate in sports, performing arts, leadership programs,
-                competitions, and cultural celebrations.
-              </p>
-
-              <p className="text-gray-600 leading-relaxed">
-                These activities build teamwork, resilience, and confidence —
-                helping students discover their true potential and passions.
-              </p>
-            </div>
-
-            {/* Image */}
-            <div className="relative group">
-              <div className="absolute inset-0 bg-[#000e51]/10 rounded-2xl"></div>
-              <img
-                src="/images/growth.jpg"
-                alt="Co-Curricular"
-                className="relative w-full h-95 object-cover rounded-md transition duration-700 "
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* CONTACT SECTION - PREMIUM LOOK */}
-      <section className="bg-linear-to-tr from-[#fdfaf4] to-white py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-start">
+      
+      <section className="bg-linear-to-tr from-[#fdfaf4] to-white py-14">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
           {/* LEFT SIDE */}
           <div className="relative pl-10 ">
-            <h2 className="text-4xl font-bold text-[#000e51] mb-6">
+            <h2 className="text-3xl font-bold text-[#000e51] mb-3">
               Visit Our Campus
             </h2>
 
@@ -230,20 +219,20 @@ const BranchPage = () => {
               development.
             </p>
 
-            <div className="space-y-8 text-lg">
+            <div className="space-y-4 text-lg">
               <div className="flex items-start gap-5">
                 <MapPin className="text-[#000e51] mt-1" size={22} />
                 <div>
                   <p className="font-semibold text-[#000e51]">Address</p>
-                  <p className="text-gray-600">{data.address}</p>
+                  <p className="text-sm text-gray-600">{data.address}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-5">
-                <Phone className="text-[#000e51] mt-1" size={22} />
+                <Phone className="text-sm text-[#000e51] mt-1" size={22} />
                 <div>
                   <p className="font-semibold text-[#000e51]">Call Us</p>
-                  <p className="text-gray-600">{data.phone}</p>
+                  <p className=" text-sm text-gray-600">{data.phone}</p>
                 </div>
               </div>
 
@@ -251,13 +240,13 @@ const BranchPage = () => {
                 <Mail className="text-[#000e51] mt-1" size={22} />
                 <div>
                   <p className="font-semibold text-[#000e51]">Email</p>
-                  <p className="text-gray-600">{data.email}</p>
+                  <p className="text-sm text-gray-600">{data.email}</p>
                 </div>
               </div>
             </div>
 
             {/* Social Icons */}
-            <div className="flex gap-6 mt-12">
+            <div className="flex gap-6 mt-6">
               {[
                 { icon: Facebook, link: data.facebook },
                 { icon: Youtube, link: data.youtube },
@@ -291,7 +280,7 @@ const BranchPage = () => {
 
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.034335562974!2d75.855087!3d22.6897657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcf840891f21%3A0x25bd02ced10a135a!2sPakiza%20Public%20School!5e0!3m2!1sen!2sin!4v1771826699097!5m2!1sen!2sin"
+                src={data.mapEmbed}
                 width="100%"
                 height="450"
                 style={{ border: 0 }}
