@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
-import { BookOpen, Sprout, Handshake, Home } from "lucide-react";
+import {
+  BookOpen,
+  Sprout,
+  Handshake,
+  Home,
+  ShieldCheck,
+  Coffee,
+  Utensils,
+  Wifi,
+} from "lucide-react"; // Added new icons
 import LeadershipMessage from "./LeaderShipMessage";
 
 const fadeUp = {
@@ -37,16 +46,24 @@ const About = () => {
     },
   ];
 
+  // New Hostel Features Data
+  const hostelFeatures = [
+    { icon: ShieldCheck, text: "24/7 Security" },
+    { icon: Utensils, text: "Hygienic Mess" },
+    { icon: Coffee, text: "Common Room" },
+    { icon: Wifi, text: "Study Zones" },
+  ];
+
   return (
     <>
       <section
         id="about"
-        className="py-14 border border-b border-gray-200 bg-white px-4 md:px-10"
+        className="py-10 border border-b border-gray-200 bg-white px-4 md:px-10"
       >
         <div className="max-w-7xl mx-auto">
           {/* ================= TITLE ================= */}
           <div className="text-center mb-7">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0B1F4B] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0B1F4B] mb-">
               About Pakiza Public School
             </h2>
 
@@ -55,10 +72,16 @@ const About = () => {
               excellence since 1999.
             </p>
 
-            {/* ⭐ Hostel Highlight Badge */}
-            <div className="mt-5 inline-flex items-center gap-2 bg-[#f7ce83]/20 text-[#0B1F4B] px-5 py-2 rounded-full text-xs md:text-sm font-semibold">
-              <Home size={16} />
-              Indore’s First School with Modern Hostel Facility
+            {/* ENHANCED Hostel Highlight Badge */}
+            <div className="mt-4 inline-flex items-center gap-3 bg-[#0B1F4B] text-white px-6 py-2 rounded-full text-xs md:text-sm  ">
+              <div className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f7ce83] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#f7ce83]"></span>
+              </div>
+              {/* <Home size={18} className="text-[#f7ce83]" /> */}
+              <span className="tracking-wide text-base">
+                Indore’s First School with Modern Hostel Facility
+              </span>
             </div>
           </div>
 
@@ -84,7 +107,7 @@ const About = () => {
 
               <p className="text-gray-600 leading-relaxed mb-3 text-sm md:text-base">
                 Proudly recognized as{" "}
-                <span className="font-semibold text-[#0B1F4B]">
+                <span className="font-bold text-[#0B1F4B] border-b-2 border-[#f7ce83]">
                   Indore’s first school to introduce a dedicated hostel facility
                 </span>
                 , we provide a safe, structured, and nurturing residential
@@ -187,7 +210,7 @@ const About = () => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="bg-[#f7ce83]/10 p-6 rounded-xl"
+              className="bg-[#f7ce83]/10 p-6 rounded-xl border border-[#f7ce83]/30"
             >
               <h3 className="text-2xl font-semibold text-[#0B1F4B] mb-4">
                 Our Vision
@@ -198,9 +221,32 @@ const About = () => {
               </p>
             </motion.div>
           </div>
+
+          {/* ================= NEW: HOSTEL QUICK INFO ================= */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="mt-10 p-6 bg-gray-50/90 rounded-xl flex flex-wrap items-center justify-around gap-6 border-l-4 border-[#0B1F4B]"
+          >
+            <div className="max-w-xs text-center md:text-left">
+              <h4 className="text-[#0B1F4B] font-bold text-lg leading-tight">
+                Residential Excellence
+              </h4>
+              <p className="text-xs text-gray-600 mt-1">Hostel Amenities</p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-8">
+              {hostelFeatures.map((item, idx) => (
+                <div key={idx} className="flex flex-col items-center gap-1">
+                  <item.icon size={20} className="text-[#0B1F4B]" />
+                  <span className="text-xs font-medium text-gray-600">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
-
       <LeadershipMessage />
     </>
   );

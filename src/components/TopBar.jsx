@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
   return (
@@ -11,13 +12,13 @@ const TopBar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 py-1 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center">
+        <Link to={"/"} className="flex items-center">
           <img
             src="/images/pakizaLogo.png"
             alt="Pakiza Public School"
             className=" h-15 object-contain"
           />
-        </div>
+        </Link>
 
         {/* CBSE Info */}
         <div className="hidden md:block text-center leading-tight">
@@ -31,14 +32,16 @@ const TopBar = () => {
 
         {/* Contact */}
         <div className="hidden sm:flex items-center gap-6 text-white">
-          <div className="flex text-base items-center gap-2 hover:text-[#f7ce83] transition-colors">
+          <div className="flex cursor-pointer text-base items-center gap-2 hover:text-[#f7ce83] transition-colors">
             <Phone size={14} className="text-[#f7ce83]" />
-            <span>+91 9109908802</span>
+            <a href="tel:+919109908802">+91 9109908802</a>
           </div>
 
-          <div className="flex text-base items-center gap-2 hover:text-[#f7ce83] transition-colors">
+          <div className="flex cursor-pointer text-base items-center gap-2 hover:text-[#f7ce83] transition-colors">
             <Mail size={14} className="text-[#f7ce83]" />
-            <span>cbsepakizapublicschool@gmail.com</span>
+            <a href="mailto:cbsepakizapublicschool@gmail.com">
+              cbsepakizapublicschool@gmail.com
+            </a>
           </div>
         </div>
       </div>

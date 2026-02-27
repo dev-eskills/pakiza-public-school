@@ -92,6 +92,7 @@ const AdmissionPopup = () => {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     to="/admission"
+                    onClick={() => setOpen(false)}
                     className="
                       flex-1 flex items-center justify-center gap-2
                       bg-[#000e51] text-white font-semibold 
@@ -101,11 +102,12 @@ const AdmissionPopup = () => {
                     "
                   >
                     <GraduationCap size={18} />
-                    Apply Now   
+                    Apply Now
                   </Link>
 
                   <Link
                     to="/contact"
+                    onClick={() => setOpen(false)}
                     className="
                       flex-1 flex items-center justify-center gap-2
                       border border-gray-300 

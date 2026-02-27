@@ -1,25 +1,13 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Play, Maximize2, Filter } from "lucide-react";
-import { galleryImages } from "../constants/galleryImages";
+import {
+  categories,
+  footerImages,
+  galleryImages,
+} from "../constants/galleryImages";
+import FooterImages from "./ui/FooterImages";
 
-const categories = [
-  "All",
-  "Campus",
-  "Academics",
-  "Sports",
-  "Events",
-  "Innovation Labs",
-];
-
-const footerImages = [
-  "/images/banner1.jpg",
-  "/images/banner3.jpg",
-  "/images/library.jpg",
-  "/images/sports.jpg",
-  "/images/events.webp",
-  "/images/sciencelab2.jpg",
-];
 export default function Gallery() {
   const [filter, setFilter] = useState("All");
   const [showVideo, setShowVideo] = useState(false);
@@ -69,7 +57,7 @@ export default function Gallery() {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className="cursor-pointer relative text-sm font-semibold text-white/60 hover:text-white transition"
+                className="cursor-pointer relative text-sm font- text-white/60 hover:text-white transition"
               >
                 {filter === cat && (
                   <motion.span
@@ -109,7 +97,7 @@ export default function Gallery() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative group cursor-pointer overflow-hidden rounded-md bg-gray-800"
+              className="relative group overflow-hidden rounded-md bg-gray-800"
             >
               {/* Image with Parallax-like Zoom */}
               <motion.img
@@ -190,43 +178,7 @@ export default function Gallery() {
       </section>
 
       {/* --- DENSE INFO FOOTER --- */}
-      <footer className="bg-[#000a3b] mt-10">
-        <div className="max-w-7xl mx-auto px-20 py-10 grid md:grid-cols-3 gap-12 text-white">
-          <div>
-            <h4 className="text-white font-bold mb-4 tracking-wide">
-              #PakizaExcellence
-            </h4>
-            <p className="text-white/60 text-sm leading-relaxed">
-              Our gallery is updated weekly. Follow our official platforms for
-              student achievements, campus life, and events.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3">
-            {footerImages.map((img, index) => (
-              <div
-                key={index}
-                className="aspect-square cursor-pointer bg-white/5 rounded-md overflow-hidden grayscale hover:grayscale-0 transition"
-              >
-                <img
-                  src={img}
-                  alt="Campus"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col justify-center items-end">
-            <p className="text-white/40 text-xs mb-4 tracking-wider">
-              WANT TO VISIT OUR CAMPUS?
-            </p>
-            <button className="px-8 py-3 border border-white text-white rounded-full hover:bg-white hover:text-[#0B1F3B] transition">
-              BOook a Campus Visit
-            </button>
-          </div>
-        </div>
-      </footer>
+    <FooterImages/>
     </div>
   );
 }

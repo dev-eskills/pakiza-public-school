@@ -12,7 +12,7 @@ const NavDropdown = ({ item }) => {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button className="flex items-center gap-1 text-white text-[16px] font-medium tracking-wide duration-300">
+      <button className="flex cursor-pointer items-center gap-1 text-white text-[16px] font-medium tracking-wide duration-300">
         {item.name}
         <ChevronDown size={16} />
       </button>
@@ -26,15 +26,33 @@ const NavDropdown = ({ item }) => {
             transition={{ duration: 0.2 }}
             className="absolute left-0 mt-3 w-56 bg-white rounded-md shadow-lg overflow-hidden"
           >
-            {item.dropdown.map((sub) => (
-              <Link
-                key={sub.name}
-                to={sub.link}
-                className="block px-4 py-3 text-[#000e51] text-sm hover:bg-[#fffbf4] transition"
-              >
-                {sub.name}
-              </Link>
-            ))}
+            {item.dropdown.map((sub) => {
+              const isExternal = sub.isPDF || sub.link.startsWith("http");
+
+              if (isExternal) {
+                return (
+                  <a
+                    key={sub.name}
+                    href={sub.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-3 text-[#000e51] text-sm hover:bg-[#fffbf4] transition cursor-pointer"
+                  >
+                    {sub.name}
+                  </a>
+                );
+              }
+
+              return (
+                <Link
+                  key={sub.name}
+                  to={sub.link}
+                  className="block px-4 py-3 text-[#000e51] text-sm hover:bg-[#fffbf4] transition"
+                >
+                  {sub.name}
+                </Link>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>

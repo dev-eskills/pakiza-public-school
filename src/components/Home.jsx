@@ -5,6 +5,7 @@ import FacilitiesSection from "./homepage/FacilitiesSection";
 import WhyChoose from "./homepage/WhyChoose";
 import NewsSection from "./homepage/NewsSection";
 import ReviewsSection from "./homepage/ReviewSection";
+import FooterImages from "./ui/FooterImages";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <WhyChoose />
       <NewsSection />
       <ReviewsSection />
+    <FooterImages/>
     </>
   );
 };

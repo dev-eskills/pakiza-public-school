@@ -1,105 +1,141 @@
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
-const testimonials = [
+interface Testimonial {
+  name: string;
+  role: string;
+  video: string;
+  thumbnail?: string;
+}
+
+interface HoverPosition {
+  x: number;
+  y: number;
+}
+
+const testimonials: Testimonial[] = [
   {
     name: "Lubna Fazilat",
     role: "Parent",
     video: "/videos/review2.mp4",
-    // thumbnail:
-    //   "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=600&fit=crop",
   },
   {
     name: "Khyati Jain (Principle)",
     role: "Parent",
     video: "/videos/review3.mp4",
-    // thumbnail:
-    //   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
   },
   {
     name: "Muhafiza Arsh",
     role: "Student",
     video: "/videos/review1.mp4",
-    // thumbnail:
-    //   "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
   },
   {
-    name: "Muhafiza Arsh",
+    name: "Arshina Khan",
     role: "Student",
     video: "/videos/review1.mp4",
-    thumbnail:
-      "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
   },
   {
-    name: "Muhafiza Arsh",
+    name: "Sara Ali",
     role: "Student",
     video: "/videos/review1.mp4",
-    thumbnail:
-      "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
   },
-  // {
-  //   name: "Muhafiza Arsh",
-  //   role: "Student",
-  //   video: "/videos/review4.mp4",
-  //   thumbnail:
-  //     "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=400&h=600&fit=crop",
-  // },
 ];
 
 const TOTAL = testimonials.length;
 
-export default function ReviewsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const videoRefs = useRef([]);
+const RecentPlacements: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const containerRef = useRef<HTMLElement>(null);
+  const [hoverPosition, setHoverPosition] = useState<HoverPosition>({ x: 0, y: 0 });
 
+  const goNext = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % TOTAL);
+  }, []);
+
+  // Handle Video Playback logic
   useEffect(() => {
     videoRefs.current.forEach((vid, i) => {
       if (!vid) return;
       if (i === activeIndex) {
         vid.currentTime = 0;
-        vid.play().catch(() => {});
+        vid.play().catch(() => {
+          // Silent catch for autoplay blocks
+        });
       } else {
         vid.pause();
-        vid.currentTime = 0;
       }
     });
   }, [activeIndex]);
 
-  const goNext = () => {
-    setActiveIndex((prev) => (prev + 1) % TOTAL);
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setHoverPosition({ x, y });
   };
 
   return (
-    <section className="bg-white py-14 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="mb-5"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#000e51] leading-tight">
-            Voices of Our Community
-            <div className="w-2xl h-px bg-linear-to-r from-[#f7ce83] via-[#0B1F4B]/30 to-transparent mt-3 rounded" />
-          </h2>
-        </motion.div>
+    <section
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      id="testimonials"
+      className="relative min-h-screen overflow-hidden bg-black py-24 px-6 flex flex-col justify-center"
+    >
+      {/* Parallax Gradients */}
+      <motion.div
+        className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full filter blur-[120px]"
+        animate={{ x: hoverPosition.x * -30, y: hoverPosition.y * -30 }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full filter blur-[120px]"
+        animate={{ x: hoverPosition.x * 30, y: hoverPosition.y * 30 }}
+      />
 
-        {/* Carousel */}
-        <div className="relative h-130 flex items-center justify-center">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl"
+          >
+            <div className="inline-block mb-4 px-4 py-1 rounded-full bg-white/5 border border-white/10 text-emerald-400 text-[10px] uppercase tracking-[0.3em] font-medium">
+              Testimonials
+            </div>
+            <h2 className="text-4xl md:text-6xl font-medium tracking-tighter text-white leading-[1.1]">
+              What our community <br />
+              <span className="text-white/40 italic">is saying.</span>
+            </h2>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-white/50 text-sm md:text-base max-w-xs leading-relaxed border-l border-emerald-500/30 pl-6"
+          >
+            Real stories from students and parents who have transformed their digital journey with us.
+          </motion.p>
+        </div>
+
+        {/* Video Slider Area */}
+        <div className="relative h-[500px] md:h-[650px] flex items-center justify-center overflow-visible">
           {testimonials.map((item, index) => {
             let offset = index - activeIndex;
-
             if (offset > TOTAL / 2) offset -= TOTAL;
             if (offset < -TOTAL / 2) offset += TOTAL;
+
             const isActive = offset === 0;
             const absOffset = Math.abs(offset);
 
-            const xPercent = offset * 72;
-            const scale = isActive ? 1 : absOffset === 1 ? 0.82 : 0.68;
-            const opacity = isActive ? 1 : absOffset === 1 ? 0.9 : 0.6;
-            const zIndex = isActive ? 10 : absOffset === 1 ? 5 : 1;
-            const blur = isActive ? 0 : absOffset === 1 ? 1 : 2;
+            const xPercent = offset * 85; 
+            const scale = isActive ? 1 : 0.75 - absOffset * 0.05;
+            const opacity = isActive ? 1 : 0.3 / absOffset;
+            const zIndex = 10 - absOffset;
+            const blur = isActive ? 0 : absOffset * 3;
 
             return (
               <motion.div
@@ -109,15 +145,19 @@ export default function ReviewsSection() {
                   scale,
                   opacity,
                   filter: `blur(${blur}px)`,
+                  rotateY: offset * -20,
                 }}
-                transition={{ type: "spring", stiffness: 260, damping: 32 }}
-                onClick={() => !isActive && setActiveIndex(index)}
-                className={`absolute w-70 h-115 rounded-3xl overflow-hidden 
-                bg-black cursor-pointer`}
-                style={{ zIndex }}
+                transition={{
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 20,
+                }}
+                onClick={() => setActiveIndex(index)}
+                className="absolute w-[280px] h-[450px] md:w-[350px] md:h-[600px] rounded-[2.5rem] overflow-hidden bg-neutral-900 cursor-pointer shadow-2xl border border-white/10"
+                style={{ zIndex, perspective: "1200px" }}
               >
                 <video
-                  ref={(el) => (videoRefs.current[index] = el)}
+                  ref={(el) => { videoRefs.current[index] = el; }}
                   playsInline
                   onEnded={goNext}
                   poster={item.thumbnail}
@@ -127,24 +167,41 @@ export default function ReviewsSection() {
                   <source src={item.video} type="video/mp4" />
                 </video>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent pointer-events-none" />
 
-                {/* Name */}
-                <motion.div
-                  animate={{ y: isActive ? 0 : 8, opacity: isActive ? 1 : 0.6 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute bottom-0 left-0 right-0 p-5"
-                >
-                  <h3 className="text-white text-xl font-semibold">
-                    {item.name}
-                  </h3>
-                </motion.div>
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <motion.div
+                    animate={{ 
+                      y: isActive ? 0 : 20, 
+                      opacity: isActive ? 1 : 0 
+                    }}
+                  >
+                    <p className="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-2">
+                      {item.role}
+                    </p>
+                    <h3 className="text-white text-2xl font-semibold leading-tight">
+                      {item.name}
+                    </h3>
+                  </motion.div>
+                </div>
               </motion.div>
             );
           })}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="mt-20 text-center"
+        >
+          <button className="group px-8 py-4 rounded-full bg-white text-black font-semibold text-sm hover:bg-emerald-400 transition-all duration-300 flex items-center gap-2 mx-auto">
+            View All Stories
+            <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform" />
+          </button>
+        </motion.div>
       </div>
     </section>
   );
-}
+};
+
+export default RecentPlacements;

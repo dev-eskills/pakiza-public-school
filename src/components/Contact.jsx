@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { branches } from "../constants/branches";
 
 export default function Contact() {
   return (
@@ -54,8 +55,8 @@ export default function Contact() {
             <div className="bg-[#0B1F4B] text-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-md space-y-6 md:space-y-8">
               <h2 className="text-2xl md:text-3xl font-bold">Get in Touch</h2>
 
-              <div className="text-sm sm:text-base space-y-6 text-blue-100">
-                {/* Phone */}
+              {/* <div className="text-sm sm:text-base space-y-6 text-blue-100">
+               
                 <div className="flex items-start gap-4">
                   <Phone size={18} className="text-[#fddda3] mt-1 shrink-0" />
                   <div className="flex flex-col">
@@ -74,7 +75,6 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Email */}
                 <div className="flex items-start gap-4">
                   <Mail size={18} className="text-[#fddda3] mt-1 shrink-0" />
                   <a
@@ -85,7 +85,7 @@ export default function Contact() {
                   </a>
                 </div>
 
-                {/* Addresses */}
+               
                 {[
                   {
                     title: "Main Campus (Jetpura)",
@@ -121,11 +121,75 @@ Indore, 452002 (M.P.)`,
                     </p>
                   </div>
                 ))}
+              </div> */}
+              <div className="text-sm sm:text-base space-y-6 text-blue-100">
+                {/* Phone Section - Dynamic from first two available numbers */}
+                <div className="flex items-start gap-4">
+                  <Phone size={18} className="text-[#fddda3] mt-1 shrink-0" />
+                  <div className="flex flex-col">
+                    <a
+                      href={`tel:${branches[3].phone}`}
+                      className="hover:text-white transition"
+                    >
+                      {branches[3].phone}
+                    </a>
+                    <a
+                      href={`tel:${branches[4].phone}`}
+                      className="hover:text-white transition"
+                    >
+                      {branches[4].phone}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Email Section */}
+                <div className="flex items-start gap-4">
+                  <Mail size={18} className="text-[#fddda3] mt-1 shrink-0" />
+                  <a
+                    href="mailto:cbsepakizapublicschool@gmail.com"
+                    className="hover:text-white transition break-all"
+                  >
+                    cbsepakizapublicschool@gmail.com
+                  </a>
+                </div>
+
+                {/* Addresses Section - Sorted to show Main and Office first */}
+                {[
+                  ...branches.filter(
+                    (b) => b.name === "Main Campus" || b.isOffice,
+                  ),
+                  ...branches.filter(
+                    (b) => b.name !== "Main Campus" && !b.isOffice,
+                  ),
+                ].map((branch, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <MapPin
+                      size={18}
+                      className="text-[#fddda3] mt-1 shrink-0"
+                    />
+                    <p className="leading-relaxed">
+                      <strong
+                        className={
+                          branch.isHostel ? "text-[#fddda3]" : "text-white"
+                        }
+                      >
+                        {branch.name}:
+                      </strong>
+                      <br />
+                      <span className="text-blue-100/80">{branch.address}</span>
+                      {branch.isHostel && (
+                        <span className="block text-[10px] mt-1 text-[#fddda3] font-bold uppercase tracking-wider">
+                          • Includes Hostel Facility
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                ))}
               </div>
 
-              <div className="pt-6 border-t border-blue-700">
+              <div className="pt-6 border-t border-white/10">
                 <p className="text-xs sm:text-sm text-blue-200">
-                  Office Hours: Monday – Saturday | 8:00 AM – 2:00 PM
+                  Monday – Saturday | 8:00 AM – 2:00 PM
                 </p>
               </div>
             </div>

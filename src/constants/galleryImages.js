@@ -141,3 +141,21 @@ export const galleryImages = [
     // title: "Main Faculty Wing",/
   },
 ];
+
+export const footerImages = [
+  "/images/banner1.jpg",
+  "/images/banner3.jpg",
+  "/images/library.jpg",
+  "/images/sports.jpg",
+  "/images/events.webp",
+  "/images/sciencelab2.jpg",
+];
+
+export const categories = [
+  "All",
+  "Campus",
+  "Academics",
+  "Sports",
+  "Events",
+  "Innovation Labs",
+];

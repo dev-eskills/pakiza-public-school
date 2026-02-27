@@ -51,7 +51,7 @@ function Hero() {
         text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
         >
           Empowering Young Minds at
-          <span className="block mt-2">
+          <span className="flex items-center justify-center mt-2">
             <AnimatedText
               underlineClassName=" text-[#f7ce83]"
               text="Pakiza Public School"
@@ -60,6 +60,18 @@ function Hero() {
               text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
               drop-shadow-lg"
             />
+            <motion.span
+              className="hidden text-[#f7ce83]  md:inline-block"
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              {" "}
+              .
+            </motion.span>
           </span>
         </h1>
 
@@ -157,7 +169,7 @@ function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 text-white flex-col items-center gap-1">
+      <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 text-white flex-col items-center gap-">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
         <ChevronDown size={20} />
       </div>

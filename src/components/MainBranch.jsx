@@ -14,12 +14,6 @@ import { Link } from "react-router-dom";
 export default function MainCampus() {
   const containerRef = useRef(null);
 
-  // Parallax for the main image
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
   const text = "Indore Ujjain Highway";
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -160,7 +154,10 @@ export default function MainCampus() {
         </div>
         <div>
           {" "}
-          <Link to={"/admission"} className="w-full py-3 flex items-center justify-center gap-2 bg-[#0B1F3B] text-white font-semibold  transition-transform duration-300">
+          <Link
+            to={"/admission"}
+            className="w-full py-3 flex items-center justify-center gap-2 bg-[#0B1F3B] text-white font-semibold  transition-transform duration-300"
+          >
             <span> Admissions Open 2026 – 27</span> <ArrowRight size={18} />
           </Link>
         </div>
@@ -300,7 +297,7 @@ export default function MainCampus() {
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="px-8 py-2  text-white font-bold rounded-md 
+              className="px-8 py-2 cursor-pointer text-white font-bold rounded-md 
              flex items-center gap-2 transition-all duration-300"
             >
               Admissions Open 2026 - 27

@@ -3,37 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import NavDropdown from "./NavDropdown";
-
-const NAV = [
-  { name: "About", link: "/about" },
-  {
-    name: "Campus",
-    dropdown: [
-      { name: "Pakiza Main Campus", link: "/main-campus" },
-      { name: "Pakiza Branch I - Manik Bagh", link: "/branches/manik-bagh" },
-      { name: "Pakiza Branch II - Khjarana", link: "/branches/khajrana" },
-      { name: "Pakiza Branch III - Green Park", link: "/branches/green-park" },
-    ],
-  },
-  {
-    name: "Academics",
-    dropdown: [
-      { name: "Academic Calendar", link: "/branches/main" },
-      {
-        name: "CBSE Mandatory Public Disclosure",
-        link: "/branches/manik-bagh",
-      },
-      { name: "Book List", link: "/campus/branch-3" },
-      { name: "Management Committee", link: "/campus/branch-3" },
-    ],
-  },
-  { name: "Gallery", link: "/gallery" },
-  { name: "Staff", link: "/Staff" },
-  // { name: "Students", link: "/Students" },
-  { name: "Admission", link: "/admission" },
-  { name: "Fees", link: "/Fees" },
-  { name: "Privacy", link: "/Privacy" },
-];
+import { navLinks } from "../constants/navLinks.js";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -72,7 +42,7 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex gap-8 mx-auto">
-          {NAV.map((item) =>
+          {navLinks.map((item) =>
             item.dropdown ? (
               <NavDropdown key={item.name} item={item} />
             ) : (

@@ -137,16 +137,6 @@ export default function AdmissionPage() {
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-
-              {/* <div className="absolute bottom-6 left-6">
-                <h3 className="text-2xl font-semibold">
-                  Sports & Leadership Activities
-                </h3>
-                <p className="text-sm text-gray-200 mt-2 max-w-md">
-                  Encouraging teamwork, discipline and confidence through
-                  structured physical development programs.
-                </p>
-              </div> */}
             </motion.div>
 
             {/* SMART CLASSROOM IMAGE */}
@@ -247,7 +237,7 @@ export default function AdmissionPage() {
       </section>
 
       {/* ================= FINAL CTA ================= */}
-      <section className="py-20 bg-[#02143a] text-center text-white">
+      <section className="py-20 bg-[#00133b] text-center text-white">
         <h2 className="text-4xl font-bold">
           Secure Your Child’s Bright Future Today
         </h2>
@@ -255,7 +245,7 @@ export default function AdmissionPage() {
           Limited seats available for the academic session 2026–27
         </p>
 
-        <button className="mt-8 bg-white text-[#1c2b4a] px-10 py-2 sm:py-4 rounded-md font-semibold hover:scale-105 transition">
+        <button className=" cursor-pointer mt-8 bg-white text-[#1c2b4a] px-10 py-2 sm:py-2 rounded-md font-semibold hover:scale-105 transition">
           Apply for Admission
         </button>
       </section>
