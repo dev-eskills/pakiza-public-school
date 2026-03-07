@@ -15,6 +15,7 @@ import MainCampus from "./components/MainBranch";
 import Admission from "./components/Admission";
 import Gallery from "./components/Gallery";
 import StaffPage from "./components/Staff";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/staff" element={<StaffPage />} />
         <Route path="/branches/:branch" element={<BranchPage />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
       </Routes>
       <Footer />
     </>

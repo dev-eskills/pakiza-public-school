@@ -1,20 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-interface Testimonial {
-  name: string;
-  role: string;
-  video: string;
-  thumbnail?: string;
-}
-
-interface HoverPosition {
-  x: number;
-  y: number;
-}
-
-const testimonials: Testimonial[] = [
+const testimonials = [
   {
     name: "Lubna Fazilat",
     role: "Parent",
@@ -44,11 +32,11 @@ const testimonials: Testimonial[] = [
 
 const TOTAL = testimonials.length;
 
-const RecentPlacements: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const containerRef = useRef<HTMLElement>(null);
-  const [hoverPosition, setHoverPosition] = useState<HoverPosition>({ x: 0, y: 0 });
+const RecentPlacements = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const videoRefs = useRef([]);
+  const containerRef = useRef(null);
+  const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
 
   const goNext = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % TOTAL);
@@ -69,7 +57,7 @@ const RecentPlacements: React.FC = () => {
     });
   }, [activeIndex]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width;
@@ -131,7 +119,7 @@ const RecentPlacements: React.FC = () => {
             const isActive = offset === 0;
             const absOffset = Math.abs(offset);
 
-            const xPercent = offset * 85; 
+            const xPercent = offset * 85;
             const scale = isActive ? 1 : 0.75 - absOffset * 0.05;
             const opacity = isActive ? 1 : 0.3 / absOffset;
             const zIndex = 10 - absOffset;
@@ -171,9 +159,9 @@ const RecentPlacements: React.FC = () => {
 
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <motion.div
-                    animate={{ 
-                      y: isActive ? 0 : 20, 
-                      opacity: isActive ? 1 : 0 
+                    animate={{
+                      y: isActive ? 0 : 20,
+                      opacity: isActive ? 1 : 0
                     }}
                   >
                     <p className="text-emerald-400 text-xs font-bold tracking-widest uppercase mb-2">
